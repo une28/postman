@@ -119,7 +119,7 @@ def switch_folder(folder):
     current_folder = folder
 
     if compose_frame_visible:
-        compose_frame.pack_forget()
+        compose_frame.place_forget()
         compose_frame_visible = False
 
     refresh_mail_list()
@@ -131,13 +131,15 @@ def compose_mail():
 
     if compose_frame_visible:
         return
+    
 
     receiver_entry.delete(0, tk.END)
     subject_entry.delete(0, tk.END)
     text_entry.delete("1.0", tk.END)
 
     mail_list_container.pack_forget()
-    compose_frame.pack(fill=tk.BOTH, expand=True)
+    #compose_frame.pack(fill=tk.BOTH, expand=True)
+    compose_frame.place(x=160, y=10)
     compose_frame_visible = True
 
 
@@ -172,7 +174,7 @@ def send_mail():
     subject_entry.delete(0, tk.END)
     text_entry.delete("1.0", tk.END)
 
-    compose_frame.pack_forget()
+    compose_frame.place_forget()
     compose_frame_visible = False
 
     refresh_mail_list()
@@ -282,7 +284,9 @@ def create_main_window():
     mail_labels = []
     toggle_buttons = []
 
-    compose_frame = ttk.Frame(main_frame)
+    compose_frame = tk.Frame(main_frame)
+    
+    #compose_frame.lift(aboveThis=None)
     
     compose_frame_visible = False
 
