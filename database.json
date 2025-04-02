@@ -86,5 +86,69 @@
         "subject": "Занятие",
         "text": "Здравствуйте. Будет ли проводиться занятие в субботу?",
         "inBin": 0
+    },
+    {
+        "id": 13,
+        "sender": "1",
+        "receiver": "fjiejfiwj@mail.ru",
+        "subject": "fegw",
+        "text": ",gkljwrjg iw igwiogjijwi jgiw jgiwijjfo3wj gjowjojgiwjigjiwjgijjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
+        "inBin": 0
+    },
+    {
+        "id": 14,
+        "sender": "2",
+        "receiver": "fjiejfiwj@mail.ru",
+        "subject": "fegw",
+        "text": ",gkljwrjg iw igwiogjijwi jgiw jgiwijjfo3wj gjowjojgiwjigjiwjgijjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
+        "inBin": 0
+    },
+    {
+        "id": 15,
+        "sender": "support@website.com",
+        "receiver": "user456@gmail.com",
+        "subject": "Восстановление пароля",
+        "text": "Здравствуйте! Мы получили запрос на сброс вашего пароля. Если это были вы, пожалуйста, перейдите по ссылке ниже для установки нового пароля. Если вы не запрашивали смену пароля, проигнорируйте это письмо. В целях безопасности мы рекомендуем вам использовать сложный пароль и не передавать его третьим лицам. Если у вас возникли вопросы, свяжитесь с нашей поддержкой.",
+        "inBin": 0
+    },
+    {
+        "id": 16,
+        "sender": "newsletter@website.com",
+        "receiver": "user789@gmail.com",
+        "subject": "Добро пожаловать в наше сообщество!",
+        "text": "Приветствуем вас! Спасибо, что присоединились к нашему сообществу. Теперь у вас есть доступ к эксклюзивным материалам, специальным предложениям и полезным статьям. Не забудьте настроить свой профиль и указать интересующие вас темы. Мы всегда рады обратной связи, поэтому пишите нам, если у вас есть пожелания. Желаем вам приятного времяпрепровождения на нашем сайте!",
+        "inBin": 0
+    },
+    {
+        "id": 17,
+        "sender": "service@website.com",
+        "receiver": "user123@gmail.com",
+        "subject": "Ваш заказ отправлен",
+        "text": "Здравствуйте! Ваш заказ №12345 успешно отправлен и уже в пути. Вы можете отслеживать его статус по ссылке ниже. Ожидаемая дата доставки — 5 апреля. Если у вас возникли вопросы по заказу, наша служба поддержки всегда готова помочь. Благодарим за ваш выбор и надеемся увидеть вас снова!",
+        "inBin": 0
+    },
+    {
+        "id": 18,
+        "sender": "promo@website.com",
+        "receiver": "user555@gmail.com",
+        "subject": "Специальное предложение только для вас!",
+        "text": "Приветствуем вас! Только сегодня мы предлагаем вам скидку 20% на весь ассортимент нашего магазина. Воспользуйтесь промокодом SPECIAL20 при оформлении заказа. Акция действует до 23:59, так что поторопитесь! Не упустите шанс сэкономить на любимых товарах. Если у вас есть вопросы, мы всегда готовы помочь!",
+        "inBin": 0
+    },
+    {
+        "id": 19,
+        "sender": "team@website.com",
+        "receiver": "user777@gmail.com",
+        "subject": "Ваш отзыв важен для нас!",
+        "text": "Здравствуйте! Мы заметили, что вы недавно воспользовались нашими услугами. Нам очень важно узнать ваше мнение! Пожалуйста, уделите пару минут и оставьте отзыв по ссылке ниже. Ваши комментарии помогут нам стать лучше. Кроме того, среди всех участников мы разыграем приятные бонусы. Спасибо за ваше время и поддержку!",
+        "inBin": 0
+    },
+    {
+        "id": 20,
+        "sender": "1",
+        "receiver": "2",
+        "subject": "2",
+        "text": "2",
+        "inBin": 0
     }
 ]

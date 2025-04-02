@@ -4,6 +4,7 @@ from tkinter import ttk
 import json
 import os
 import sv_ttk
+import re
 
 # Файлы с данными
 DATABASE_FILE = os.path.join(os.path.dirname(__file__), "database.json")
@@ -102,7 +103,7 @@ def toggle_mail(index):
     current_text = mail_labels[index].cget("text")
     if mails[index]["text"] not in current_text:
         mail_labels[index].config(
-            text=f"Отправитель: {mails[index]['sender']}\nПолучатель: {mails[index]['receiver']}\nТема: {mails[index]['subject']}\nСодержание: {mails[index]['text']}"
+            text=f"Отправитель: {mails[index]['sender']}\nПолучатель: {mails[index]['receiver']}\nТема: {mails[index]['subject']}\n{mails[index]['text']}"
         )
         toggle_buttons[index].config(text="▼")
     else:
@@ -201,34 +202,35 @@ def display_mails():
         mail_item = ttk.Frame(mail_list_container)
         mail_item.pack(fill=tk.X, padx=5, pady=2)
 
+        # Кнопка "▶/▼" в левом верхнем углу
         toggle_button = ttk.Button(
-            mail_item, text="▶", width=2,  command=lambda i=index: toggle_mail(i)
+            mail_item, text="▶", width=2, command=lambda i=index: toggle_mail(i)
         )
-        toggle_button.pack(side=tk.LEFT)
+        toggle_button.pack(side=tk.LEFT, anchor="nw", padx=15, pady=18)
         toggle_buttons.append(toggle_button)
 
+        # Текст письма с переносом строк
         mail_label = ttk.Label(
             mail_item,
             text=f"Отправитель: {mail['sender']}\nПолучатель: {mail['receiver']}\nТема: {mail['subject']}",
+            wraplength=1000,  # Ограничивает ширину, после которой текст переносится
+            justify="left"
         )
-        mail_label.pack(side=tk.LEFT, fill=tk.X, expand=True)
+        mail_label.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5, pady=5)
         mail_labels.append(mail_label)
 
+        # Кнопки удаления и восстановления
         if current_folder == "Корзина":
             restore_button = ttk.Button(
-                mail_item,
-                text="Восстановить",
-                command=lambda mid=mail["id"]: restore_mail(mid),
+                mail_item, text="Восстановить", command=lambda mid=mail["id"]: restore_mail(mid)
             )
-            restore_button.pack(side=tk.RIGHT)
+            restore_button.pack(side=tk.RIGHT, padx=2)
 
         delete_button_text = "В корзину" if current_folder != "Корзина" else "Удалить"
         delete_button = ttk.Button(
-            mail_item,
-            text=delete_button_text,
-            command=lambda mid=mail["id"]: delete_mail(mid),
+            mail_item, text=delete_button_text, command=lambda mid=mail["id"]: delete_mail(mid)
         )
-        delete_button.pack(side=tk.RIGHT)
+        delete_button.pack(side=tk.RIGHT, padx=2)
 
 
 def create_main_window():
@@ -248,7 +250,7 @@ def create_main_window():
     style.map('Sidebar.TButton',
              background=[('active', '#a0c0e0'), ('pressed', '#8090c0')])
     
-    style.configure('TLabel', font=('Cascadia Code', 11), padding=15)
+    style.configure('TLabel', font=('Cascadia Code', 11), padding=10)
 
 
     main_frame = ttk.Frame(root)
@@ -281,6 +283,7 @@ def create_main_window():
     toggle_buttons = []
 
     compose_frame = ttk.Frame(main_frame)
+    
     compose_frame_visible = False
 
     receiver_label = ttk.Label(compose_frame, text="Получатель:")
@@ -315,6 +318,35 @@ def create_main_window():
 
     root.mainloop()
 
+def register():
+    global current_user
+    email = email_entry.get()
+    password = password_entry.get()
+    
+    if not email or not password:
+        messagebox.showerror("Ошибка", "Логин и пароль не могут быть пустыми")
+        return
+    
+    if not re.match(r"^[\w\.-]+@[\w\.-]+\.\w{2,}$", email):
+        messagebox.showerror("Ошибка", "Логин должен быть действительным почтовым адресом")
+        return
+    
+    users = load_data(USERS_FILE)
+    
+    # Проверяем, есть ли уже такой пользователь
+    for user in users:
+        if user["user"] == email:
+            messagebox.showerror("Ошибка", "Этот логин уже используется")
+            return
+    
+    # Добавляем нового пользователя
+    users.append({"user": email, "password": password})
+    save_data(USERS_FILE, users)
+    
+    current_user = email
+    login_window.destroy()
+    create_main_window()
+
 
 # Окно входа
 login_window = tk.Tk()
@@ -338,5 +370,10 @@ password_entry.grid(row=1, column=1, padx=10, pady=5)
 
 login_button = ttk.Button(login_window, text="Войти", command=login)
 login_button.grid(row=2, column=0, columnspan=2, pady=10, padx = 10, sticky='E')
+
+# Добавляем кнопку "Создать аккаунт"
+register_button = ttk.Button(login_window, text="Создать аккаунт", command=register)
+register_button.grid(row=2, column=0, columnspan=2, pady=10, padx=10, sticky='W')
+
 
 login_window.mainloop()

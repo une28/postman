@@ -2,5 +2,13 @@
     {
         "user": "1",
         "password": "1"
+    },
+    {
+        "user": "user@gmail.com",
+        "password": "2"
+    },
+    {
+        "user": "hdwjhf@mail.ru",
+        "password": "dw"
     }
 ]
